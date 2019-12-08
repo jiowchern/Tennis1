@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2BBB13E3-AC2A-46D5-8453-7DA5E4013C16}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Regulus.Game.Tennis1.Game</RootNamespace>
+    <AssemblyName>Regulus.Game.Tennis1.Game</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Ball.cs" />
+    <Compile Include="Court.cs" />
+    <Compile Include="Entry.cs" />
+    <Compile Include="LoungePlayer.cs" />
+    <Compile Include="MatchContestant.cs" />
+    <Compile Include="Matcher.cs" />
+    <Compile Include="Identifiable.cs" />
+    <Compile Include="Player.cs" />
+    <Compile Include="PlayStage.cs" />
+    <Compile Include="Preparation.cs" />
+    <Compile Include="PreparationStage.cs" />
+    <Compile Include="Round.cs" />
+    <Compile Include="User.cs" />
+    <Compile Include="Lounge.cs" />
+    <Compile Include="UserSet.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\theirs\Regulus\Library\PureLib\Regulus.Library.csproj">
+      <Project>{2f28aa04-316d-4c20-bf46-987d4a59691d}</Project>
+      <Name>Regulus.Library</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\theirs\Regulus\Library\Remoting\Regulus.Remote.csproj">
+      <Project>{a4cfce46-bda8-4416-a1bb-77bd80514019}</Project>
+      <Name>Regulus.Remote</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Regulus.Game.Tennis1.Protocol\Regulus.Game.Tennis1.Protocol.csproj">
+      <Project>{c42bbcef-5748-49e9-997e-890053126900}</Project>
+      <Name>Regulus.Game.Tennis1.Protocol</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
