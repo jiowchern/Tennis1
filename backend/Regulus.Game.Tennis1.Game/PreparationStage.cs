@@ -5,7 +5,7 @@ using System.Linq;
 namespace Regulus.Game.Tennis1.Game
 {
 
-    internal class PreparationStage : Regulus.Utility.IStage
+    public class PreparationStage : Regulus.Utility.IStage
     {
         private readonly User[] _Users;
         private readonly Preparation[] _Preparations;

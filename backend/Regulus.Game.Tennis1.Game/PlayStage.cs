@@ -5,7 +5,7 @@ using Regulus.Utility;
 
 namespace Regulus.Game.Tennis1.Game
 {
-    internal class PlayStage : Regulus.Utility.IStage , IPlayground
+    public class PlayStage : Regulus.Utility.IStage , IPlayground
     {
         readonly Regulus.Utility.StageMachine _Machine;
 
@@ -34,15 +34,16 @@ namespace Regulus.Game.Tennis1.Game
                 foreach (var user in _Users)
                 {
                     user.Binder.Bind<Regulus.Game.Tennis1.Protocol.IPlayer>(player);
-                    user.Binder.Bind<Regulus.Game.Tennis1.Protocol.IPlayground>(this);
                 }
             }
 
             foreach(var p in _GetPlayers())
             {
                 p.Item1.Binder.Bind<Regulus.Game.Tennis1.Protocol.IControll>(p.Item2);
+                p.Item1.Binder.Bind<Regulus.Game.Tennis1.Protocol.IPlayground>(this);
+
             }
-            
+
         }
 
         void IPlayground.Exit()
@@ -61,13 +62,14 @@ namespace Regulus.Game.Tennis1.Game
                 foreach (var user in _Users)
                 {
                     user.Binder.Unbind<Regulus.Game.Tennis1.Protocol.IPlayer>(player);
-                    user.Binder.Unbind<Regulus.Game.Tennis1.Protocol.IPlayground>(this);
                 }
             }
 
             foreach (var p in _GetPlayers())
             {
                 p.Item1.Binder.Unbind<Regulus.Game.Tennis1.Protocol.IControll>(p.Item2);
+                p.Item1.Binder.Unbind<Regulus.Game.Tennis1.Protocol.IPlayground>(this);
+
             }
         }
 

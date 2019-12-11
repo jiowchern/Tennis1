@@ -2,27 +2,29 @@
 
 namespace Regulus.Game.Tennis1.Game
 {
-    internal class Court
+    public class Court
     {
         readonly System.Collections.Generic.List<Round> _Rounds;
 
-        public System.Action<Round> DoneEvent;
+        public System.Action<System.Collections.Generic.IEnumerable<Guid>> DoneEvent;
 
         public Court()
         {
             _Rounds = new System.Collections.Generic.List<Round>();
         }
-        internal void Join(Round round)
+        public void Join(System.Collections.Generic.IEnumerable<User> users)
         {
+            var round = new Round(users);
+            _Rounds.Add(round);
             round.DoneOnceEvent += () =>
             {
-                round.Stop();
-                DoneEvent(round);
+                _Left(round);
+                DoneEvent(round.ContestantIds);
             };
             round.Start();
         }
 
-        internal void Left(Guid id)
+        public void Left(Guid id)
         {
             foreach(var round in _Rounds)
             {

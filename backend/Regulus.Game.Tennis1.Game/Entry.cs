@@ -56,8 +56,8 @@ namespace Regulus.Game.Tennis1.Game
                 _ToLougne(contestant);
             };
 
-            _Court.DoneEvent += (round) => {
-                foreach( var contestant in round.ContestantIds)
+            _Court.DoneEvent += (ids) => {
+                foreach( var contestant in ids)
                 {
                     _ToLougne(contestant);
                 }
@@ -67,7 +67,7 @@ namespace Regulus.Game.Tennis1.Game
         private void _ToCourt(IEnumerable<System.Guid> ids)
         {
             
-            _Court.Join(new Round(ids.Select(id => _Users.Query(id))));
+            _Court.Join(ids.Select(id => _Users.Query(id)));
         }
 
         private void _ToLougne(System.Guid id)
