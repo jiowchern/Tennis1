@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Regulus.Game.Tennis1.Protocol
 {
-    public interface ILounge
+    public interface IPreparer
     {
         void SignUp(string name);
     }

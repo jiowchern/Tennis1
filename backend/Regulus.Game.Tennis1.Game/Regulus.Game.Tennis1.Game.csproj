@@ -44,8 +44,7 @@
     <Compile Include="Ball.cs" />
     <Compile Include="Court.cs" />
     <Compile Include="Entry.cs" />
-    <Compile Include="LoungePlayer.cs" />
-    <Compile Include="MatchContestant.cs" />
+    <Compile Include="Preparer.cs" />
     <Compile Include="Matcher.cs" />
     <Compile Include="Identifiable.cs" />
     <Compile Include="Player.cs" />

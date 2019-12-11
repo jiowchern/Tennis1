@@ -34,7 +34,7 @@ namespace Regulus.Game.Tennis1.Game
                 _Users.Remove(user.Id);
             };
 
-            _Lounge.Join(new LoungePlayer(user));
+            _Lounge.Join(user);
         }
         void IBootable.Launch()
         {
@@ -42,18 +42,18 @@ namespace Regulus.Game.Tennis1.Game
         }
         public void Launch()
         {
-            _Lounge.ChallengeEvent += (player , name)=> {
-                _ToMatch(player.Id , name);
+            _Lounge.ChallengeEvent += (id , name)=> {
+                _ToMatch(id, name);
             };
 
             _Matcher.MatchEvent += (contestants) =>
             {
-                _ToCourt(contestants.Select((contestant) => contestant.Id));                
+                _ToCourt(contestants);                
             };
 
             _Matcher.CancelEvent += (contestant) =>
             {
-                _ToLougne(contestant.Id);
+                _ToLougne(contestant);
             };
 
             _Court.DoneEvent += (round) => {
@@ -73,14 +73,14 @@ namespace Regulus.Game.Tennis1.Game
         private void _ToLougne(System.Guid id)
         {
             var user = _Users.Query(id);
-            _Lounge.Join(new LoungePlayer(user));
+            _Lounge.Join(user);
         }
 
         private void  _ToMatch(System.Guid id, string name) 
         {
             var user = _Users.Query(id);
             user.Name = name;
-            _Matcher.Join(new MatchContestant(user));
+            _Matcher.Join(user);
         }
         public void Shutdown()
         {

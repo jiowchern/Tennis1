@@ -1,9 +1,10 @@
 ﻿using System;
 using Regulus.Remote;
 
+
 namespace Regulus.Game.Tennis1.Game
 {
-    internal class User
+    public class User
     {
         public readonly ISoulBinder Binder;
         public readonly Guid Id;

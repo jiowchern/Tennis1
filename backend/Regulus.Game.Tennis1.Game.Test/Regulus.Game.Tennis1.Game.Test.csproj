@@ -14,7 +14,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\theirs\Regulus\Library\PureLib\Regulus.Library.csproj" />
+    <ProjectReference Include="..\..\theirs\Regulus\Library\Remoting\Regulus.Remote.csproj" />
     <ProjectReference Include="..\Regulus.Game.Tennis1.Game\Regulus.Game.Tennis1.Game.csproj" />
+    <ProjectReference Include="..\Regulus.Game.Tennis1.Protocol\Regulus.Game.Tennis1.Protocol.csproj" />
   </ItemGroup>
 
 </Project>

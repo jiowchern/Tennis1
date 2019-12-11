@@ -42,8 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IControll.cs" />
-    <Compile Include="ILounge.cs" />
-    <Compile Include="IMatch.cs" />
+    <Compile Include="IPreparer.cs" />
+    <Compile Include="IMatchable.cs" />
     <Compile Include="IPlayer.cs" />
     <Compile Include="IPlayground.cs" />
     <Compile Include="IPreparable.cs" />

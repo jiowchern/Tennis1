@@ -71,13 +71,13 @@ namespace Regulus.Game.Tennis1.User
 
         private void _CreateMatch(IGPIBinderFactory factory)
         {
-            var gpi = factory.Create(this._User.Agent.QueryNotifier<Regulus.Game.Tennis1.Protocol.IMatch>());
+            var gpi = factory.Create(this._User.Agent.QueryNotifier<Regulus.Game.Tennis1.Protocol.IMatchable>());
             gpi.Bind((instance) => instance.Cancel());
         }
 
         private void _CreateLounge(IGPIBinderFactory factory)
         {
-            var gpi = factory.Create(this._User.Agent.QueryNotifier<Regulus.Game.Tennis1.Protocol.ILounge>());
+            var gpi = factory.Create(this._User.Agent.QueryNotifier<Regulus.Game.Tennis1.Protocol.IPreparer>());
             gpi.Bind<string>((instance, name) => instance.SignUp(name));
         }
         

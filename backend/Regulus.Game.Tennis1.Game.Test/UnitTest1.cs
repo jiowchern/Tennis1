@@ -8,86 +8,84 @@ namespace Tests
         public void Setup()
         {
         }
+
+
+
+
+        // 準備玩家已SignIn
         [Test]
-        public void LoungeJoinLeftTest()
+        public void LoungeSignInTest()
         {
-            var id1 = System.Guid.NewGuid();
-            var player1 = NSubstitute.Substitute.For<Regulus.Game.Tennis1.Game.Lounge.IPlayable>();
-            player1.Id.Returns(id1);
+
+            var binder = new LoungeBinder();
+            var user = new Regulus.Game.Tennis1.Game.User(binder);
             var lounge = new Regulus.Game.Tennis1.Game.Lounge();
-            lounge.Join(player1);
-            lounge.Left(player1.Id);
-            Assert.Pass();
-
-
-        }
-
-        [Test]
-        public void LoungeSafeLeftTest()
-        {
-            var id1 = System.Guid.NewGuid();
-            var player1 = NSubstitute.Substitute.For<Regulus.Game.Tennis1.Game.Lounge.IPlayable>();
-            player1.Id.Returns(id1);
-            var lounge = new Regulus.Game.Tennis1.Game.Lounge();
-            lounge.Left(player1.Id);
-            Assert.Pass();
-
-
-        }
-        [Test]
-        public void MatcherOneToOneJoinTest()
-        {
-            var id1 = System.Guid.NewGuid();
-            var player1 = NSubstitute.Substitute.For<Regulus.Game.Tennis1.Game.Matcher.IContestant>();
-            player1.Id.Returns(id1);
-
-            var id2 = System.Guid.NewGuid();
-            var player2 = NSubstitute.Substitute.For<Regulus.Game.Tennis1.Game.Matcher.IContestant>();
-            player2.Id.Returns(id2);
-
-            bool done = false;
-            var matcher = new Regulus.Game.Tennis1.Game.Matcher();
-            matcher.MatchEvent += (contestants) =>
+            int challenge = 0;
+            lounge.ChallengeEvent += (id, name) =>
             {
-                done = contestants[0].Id == id1 && contestants[1].Id == id2;
+                challenge++;
             };
+            lounge.Join(user);
 
-            matcher.Join(player1);
-            matcher.Join(player2);
-            Assert.True(done);
+            binder.Lounge.SignUp("player");
+            binder.Lounge.SignUp("player");
+
+            Assert.AreEqual(true, binder.IsUnbind);
             
+            Assert.IsTrue(challenge == 1);
         }
 
+
+        // 兩個玩家匹配完成
         [Test]
-        public void MatcherLeftTest()
+        public void MatchJoinTest()
         {
-            var id1 = System.Guid.NewGuid();
-            var player1 = NSubstitute.Substitute.For<Regulus.Game.Tennis1.Game.Matcher.IContestant>();
-            player1.Id.Returns(id1);
+            var binder1 = new MatchBinder();
+            var user1 = new Regulus.Game.Tennis1.Game.User(binder1);
+
+            var binder2 = new MatchBinder();
+            var user2 = new Regulus.Game.Tennis1.Game.User(binder2);
 
             var matcher = new Regulus.Game.Tennis1.Game.Matcher();
-            matcher.Left(player1.Id);
 
-            Assert.Pass();
-        }
-
-        [Test]
-        public void MatcherCancelTest()
-        {
-            var id1 = System.Guid.NewGuid();
-            var player1 = NSubstitute.Substitute.For<Regulus.Game.Tennis1.Game.Matcher.IContestant>();
-            player1.Id.Returns(id1);
-            bool cancel = false;
-            var matcher = new Regulus.Game.Tennis1.Game.Matcher();
-            matcher.CancelEvent += (contestant) => {
-                cancel = true;
+            System.Guid id1 = System.Guid.NewGuid();
+            System.Guid id2 = System.Guid.NewGuid();
+            matcher.MatchEvent += (ids) =>
+            {
+                id1 = ids[0];
+                id2 = ids[1];
             };
-            matcher.Join(player1);
-            player1.CancelOnceEvent += Raise.Event<System.Action>();
+            matcher.Join(user1);
+            matcher.Join(user2);
 
-            Assert.True(cancel);
+            Assert.AreEqual(user1.Id, id1);
+            Assert.AreEqual(user2.Id, id2);
+
+            Assert.AreEqual(true, binder1.IsUnbind);
+            Assert.AreEqual(true, binder2.IsUnbind);
+
+
         }
 
+        // 匹配取消測試
+        [Test]
+        public void MatchCancelTest()
+        {
+            var binder1 = new MatchBinder();
+            var user1 = new Regulus.Game.Tennis1.Game.User(binder1);
 
+            var matcher = new Regulus.Game.Tennis1.Game.Matcher();
+            matcher.Join(user1);
+            int cancelCount = 0;
+            matcher.CancelEvent += (id) =>
+            {
+                cancelCount++;
+            };
+
+            binder1.Matchable.Cancel();
+            binder1.Matchable.Cancel();
+            Assert.AreEqual(1 , cancelCount);
+            Assert.AreEqual(true, binder1.IsUnbind);
+        }
     }
 }

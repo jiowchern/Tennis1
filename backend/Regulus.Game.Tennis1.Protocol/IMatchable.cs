@@ -1,6 +1,6 @@
 ﻿namespace Regulus.Game.Tennis1.Protocol
 {
-    public interface IMatch
+    public interface IMatchable
     {
         void Cancel();
     }
