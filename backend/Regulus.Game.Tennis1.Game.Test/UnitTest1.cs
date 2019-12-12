@@ -38,14 +38,15 @@ namespace Tests
 
         // 兩個玩家匹配完成
         [Test]
-        public void MatchJoinTest()
+        public void MatchJoin2Test()
         {
             var binder1 = new MatchBinder();
             var user1 = new Regulus.Game.Tennis1.Game.User(binder1);
+            user1.Registration = new Regulus.Game.Tennis1.Protocol.Registration() { Name = "1", PlayerNumber = 2 };
 
             var binder2 = new MatchBinder();
             var user2 = new Regulus.Game.Tennis1.Game.User(binder2);
-
+            user2.Registration = new Regulus.Game.Tennis1.Protocol.Registration() { Name = "2", PlayerNumber = 2 };
             var matcher = new Regulus.Game.Tennis1.Game.Matcher();
 
             System.Guid id1 = System.Guid.NewGuid();
@@ -67,21 +68,51 @@ namespace Tests
 
         }
 
+        // 1個玩家匹配完成
+        [Test]
+        public void MatchJoin1Test()
+        {
+            var binder1 = new MatchBinder();
+            var user1 = new Regulus.Game.Tennis1.Game.User(binder1);
+            user1.Registration = new Regulus.Game.Tennis1.Protocol.Registration() { Name = "1", PlayerNumber = 1 };
+
+            
+            var matcher = new Regulus.Game.Tennis1.Game.Matcher();
+
+            System.Guid id1 = System.Guid.NewGuid();
+            
+            matcher.MatchEvent += (ids) =>
+            {
+                id1 = ids[0];
+                
+            };
+            matcher.Join(user1);
+            
+
+            Assert.AreEqual(user1.Id, id1);
+            
+
+            Assert.AreEqual(true, binder1.IsUnbind);
+            
+
+
+        }
+
         // 匹配取消測試
         [Test]
         public void MatchCancelTest()
         {
             var binder1 = new MatchBinder();
             var user1 = new Regulus.Game.Tennis1.Game.User(binder1);
-
+            user1.Registration = new Regulus.Game.Tennis1.Protocol.Registration() { Name = "1", PlayerNumber = 2 };
             var matcher = new Regulus.Game.Tennis1.Game.Matcher();
-            matcher.Join(user1);
+            
             int cancelCount = 0;
             matcher.CancelEvent += (id) =>
             {
                 cancelCount++;
             };
-
+            matcher.Join(user1);
             binder1.Matchable.Cancel();
             binder1.Matchable.Cancel();
             Assert.AreEqual(1, cancelCount);

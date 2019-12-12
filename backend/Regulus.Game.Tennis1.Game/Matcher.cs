@@ -34,50 +34,55 @@ namespace Regulus.Game.Tennis1.Game
                 CancelOnceEvent = () => { };
             }
         }
-        readonly System.Collections.Generic.List<Contestant> _Waiter;
+        readonly System.Collections.Generic.List<Contestant> _Waiters;
         public Action<System.Guid[]> MatchEvent;
         public Action<System.Guid> CancelEvent;
 
         public Matcher()
         {
-            _Waiter = new System.Collections.Generic.List<Contestant>();
+            _Waiters = new System.Collections.Generic.List<Contestant>();
 
         }
         public void Join(User user)
         {
-            var contestant = new Contestant(user);
-            contestant.Start();
-            
-            if (_Waiter.Count > 0)
-            {                
-                var opponent = _Waiter[0];
-                Left(opponent.Id);                
-                
-                contestant.End();
-                
-                MatchEvent.Invoke(new System.Guid[] { opponent.Id, contestant.Id });
-            }
-            else
+            var contestant = new Contestant(user);            
+            contestant.CancelOnceEvent += () =>
             {
-                
-                contestant.CancelOnceEvent += () =>
+                Left(contestant.Id);
+                CancelEvent(contestant.Id);
+            };
+            contestant.Start();
+            _Waiters.Add(contestant);
+
+            var numberGroups = from waiter in _Waiters group waiter by waiter.PlayerNumber;
+            foreach(var numberGroup in numberGroups)
+            {
+                var playerNumber = numberGroup.Key;
+                var playerCount = numberGroup.Count();
+                var teamCount = playerCount / playerNumber;
+                for (var i= 0;i < teamCount; i++)
                 {
-                    Left(contestant.Id);
-                    CancelEvent(contestant.Id);
-                };                
-                _Waiter.Add(contestant);
+                    var team = numberGroup.Skip(i * playerNumber).Take(playerNumber);
+                    var ids = team.Select(c => c.Id).ToArray();
+                    foreach(var id in ids)
+                    {
+                        Left(id);
+                    }
+                    MatchEvent(ids);
+                }
+                
             }
         }
 
         public int Left(System.Guid id)
         {
-            var contestant = _Waiter.Find((w) => w.Id == id);
+            var contestant = _Waiters.Find((w) => w.Id == id);
             if (contestant== null )
             {
                 return 0;
             }
             contestant.End();
-            return _Waiter.RemoveAll((c) => c.Id == id );
+            return _Waiters.RemoveAll((c) => c.Id == id );
         }
     }
 }

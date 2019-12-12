@@ -16,6 +16,6 @@ namespace Regulus.Game.Tennis1.Game
             
         }
 
-        public Regulus.Game.Tennis1.Protocol.Registration Registration { get; internal set; }
+        public Regulus.Game.Tennis1.Protocol.Registration Registration { get; set; }
     }
 }
