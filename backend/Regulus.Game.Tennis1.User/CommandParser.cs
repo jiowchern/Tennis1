@@ -78,7 +78,7 @@ namespace Regulus.Game.Tennis1.User
         private void _CreateLounge(IGPIBinderFactory factory)
         {
             var gpi = factory.Create(this._User.Agent.QueryNotifier<Regulus.Game.Tennis1.Protocol.IPreparer>());
-            gpi.Bind<string>((instance, name) => instance.SignUp(name));
+            gpi.BindStatic<string,int>((instance, name,count) => GPIHelper.SignUp(instance, name,count));
         }
         
         private void _CreateConnect(IGPIBinderFactory factory)

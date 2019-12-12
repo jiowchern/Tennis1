@@ -1,4 +1,5 @@
-﻿using Regulus.Remote;
+﻿using Regulus.Game.Tennis1.Protocol;
+using Regulus.Remote;
 using System;
 
 namespace Regulus.Game.Tennis1.User
@@ -15,6 +16,11 @@ namespace Regulus.Game.Tennis1.User
         {
 
             gpi.Move(new CustomType.Vector2(x,y));
+        }
+
+        internal static void SignUp(IPreparer gpi, string name, int count)
+        {
+            gpi.SignUp(new Registration() { Name=name,PlayerNumber = count});
         }
     }
 }

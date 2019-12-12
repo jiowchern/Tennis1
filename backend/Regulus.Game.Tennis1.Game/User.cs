@@ -12,9 +12,10 @@ namespace Regulus.Game.Tennis1.Game
         {
             Id = Guid.NewGuid();
             Binder = binder;
-            Name = Id.ToString();
+            Registration = new Protocol.Registration() { Name = Id.ToString(), PlayerNumber = 1 };
+            
         }
 
-        public string Name { get; internal set; }
+        public Regulus.Game.Tennis1.Protocol.Registration Registration { get; internal set; }
     }
 }

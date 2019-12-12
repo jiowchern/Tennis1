@@ -27,8 +27,8 @@ namespace Tests
             };
             lounge.Join(user);
 
-            binder.Lounge.SignUp("player");
-            binder.Lounge.SignUp("player");
+            binder.Lounge.SignUp(new Regulus.Game.Tennis1.Protocol.Registration() { Name = "1" , PlayerNumber =  2 });
+            binder.Lounge.SignUp(new Regulus.Game.Tennis1.Protocol.Registration() { Name = "1", PlayerNumber = 2 });
 
             Assert.AreEqual(true, binder.IsUnbind);
 

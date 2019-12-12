@@ -1,5 +1,6 @@
 ﻿using Regulus.Game.Tennis1.Protocol;
 using System;
+using System.Linq;
 
 namespace Regulus.Game.Tennis1.Game
 {
@@ -9,10 +10,12 @@ namespace Regulus.Game.Tennis1.Game
         {
             private readonly User _User;
             public readonly System.Guid Id;
+            public readonly int PlayerNumber;
             public Contestant(User user)
             {
                 this._User = user;
                 Id = user.Id;
+                PlayerNumber = user.Registration.PlayerNumber;
             }
 
             public event System.Action CancelOnceEvent;
@@ -44,6 +47,7 @@ namespace Regulus.Game.Tennis1.Game
         {
             var contestant = new Contestant(user);
             contestant.Start();
+            
             if (_Waiter.Count > 0)
             {                
                 var opponent = _Waiter[0];

@@ -22,17 +22,17 @@ namespace Regulus.Game.Tennis1.Game
         {
             _User.Binder.Unbind<Protocol.IPreparer>(this);
         }
-        void Protocol.IPreparer.SignUp(string name)
+        void Protocol.IPreparer.SignUp(Registration registration)
         {
-            SignUpOnceEvent.Invoke(name);
+            SignUpOnceEvent.Invoke(registration);
             SignUpOnceEvent = _Empty;
         }
 
-        private void _Empty(string name)
+        private void _Empty(Registration registration)
         {
         }
 
-        public event System.Action<string> SignUpOnceEvent;
+        public event System.Action<Registration> SignUpOnceEvent;
 
     }
 }

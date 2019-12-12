@@ -42,8 +42,8 @@ namespace Regulus.Game.Tennis1.Game
         }
         public void Launch()
         {
-            _Lounge.ChallengeEvent += (id , name)=> {
-                _ToMatch(id, name);
+            _Lounge.ChallengeEvent += (id , registration) => {
+                _ToMatch(id, registration);
             };
 
             _Matcher.MatchEvent += (contestants) =>
@@ -76,10 +76,10 @@ namespace Regulus.Game.Tennis1.Game
             _Lounge.Join(user);
         }
 
-        private void  _ToMatch(System.Guid id, string name) 
+        private void  _ToMatch(System.Guid id, Regulus.Game.Tennis1.Protocol.Registration registration) 
         {
             var user = _Users.Query(id);
-            user.Name = name;
+            user.Registration = registration;
             _Matcher.Join(user);
         }
         public void Shutdown()

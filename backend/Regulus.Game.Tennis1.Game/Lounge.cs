@@ -4,13 +4,11 @@
     {
         
 
-        public event System.Action<System.Guid, string> ChallengeEvent;
+        public event System.Action<System.Guid, Regulus.Game.Tennis1.Protocol.Registration> ChallengeEvent;
 
         readonly System.Collections.Generic.List<Preparer> _Players;
         public Lounge()
         {
-
-
             _Players = new System.Collections.Generic.List<Preparer>();
         }
         
@@ -32,10 +30,10 @@
         {
             var player = new Preparer(user);
             
-            player.SignUpOnceEvent += (name)=>
+            player.SignUpOnceEvent += (registration) =>
             {
                 Left(user.Id);
-                ChallengeEvent.Invoke(user.Id, name);
+                ChallengeEvent.Invoke(user.Id, registration);
             };
             player.Start();
             lock (_Players)
