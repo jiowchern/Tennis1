@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;netcoreapp2.0</TargetFrameworks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\theirs\Regulus\Regulus.Utility\Regulus.Utility.csproj" />
+    <ProjectReference Include="..\Tennis1.Common\Tennis1.Common.csproj" />
+  </ItemGroup>
+
+</Project>

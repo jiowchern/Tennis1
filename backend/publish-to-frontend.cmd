@@ -1,13 +1,23 @@
+
+
+dotnet clean 
+dotnet restore
+
+
+dotnet build ../theirs/regulus/Regulus.Application.Server
+dotnet build ../theirs/regulus/Regulus.Application.Protocol.Generator
+dotnet build 
+
 rd ..\frontend\Tennis1\Assets\Project\Backend /q /s
 mkdir ..\frontend\Tennis1\Assets\Project\Backend
 
-copy Regulus.Game.Tennis1.User\bin\Debug\*.*  ..\frontend\Tennis1\Assets\Project\Backend
-copy Regulus.Game.Tennis1.Game\bin\Debug\*.*  ..\frontend\Tennis1\Assets\Project\Backend
-copy ..\theirs\Regulus\Library\Remoting\bin\Debug\*.*  ..\frontend\Tennis1\Assets\Project\Backend
-copy ..\theirs\Regulus\Library\Regulus.Serialization\bin\Debug\*.*  ..\frontend\Tennis1\Assets\Project\Backend
+copy Tennis1.User\bin\Debug\netstandard2.0\*.*  ..\frontend\Tennis1\Assets\Project\Backend
+copy Tennis1.Game\bin\Debug\netstandard2.0\*.*  ..\frontend\Tennis1\Assets\Project\Backend
+copy ..\theirs\Regulus\Regulus.Remote\bin\Debug\netstandard2.0\*.*  ..\frontend\Tennis1\Assets\Project\Backend
+copy ..\theirs\Regulus\Regulus.Serialization\bin\Debug\netstandard2.0\*.*  ..\frontend\Tennis1\Assets\Project\Backend
 
-cd ..\theirs\Regulus\Tool\GhostProviderGenerator\bin\Debug
+cd ..\theirs\Regulus\Regulus.Application.Protocol.Generator\bin\Debug\netcoreapp2.0
 
-Regulus.Application.Protocol.Generator.exe ..\..\..\..\..\..\backend\Regulus.Game.Tennis1.Protocol\bin\Debug\Regulus.Game.Tennis1.Protocol.dll ..\..\..\..\..\..\frontend\Tennis1\Assets\Project\Backend\Regulus.Game.Tennis1.ProtocolTmpl.dll
+dotnet .\Regulus.Application.Protocol.Generator.dll ..\..\..\..\..\..\backend\Tennis1.Common\bin\Debug\netstandard2.0\Tennis1.Common.dll ..\..\..\..\..\..\frontend\Tennis1\Assets\Project\Backend\Tennis1.Protocol.dll
 
 pause

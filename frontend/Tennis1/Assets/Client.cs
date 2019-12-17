@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Collections.Generic;
 using Regulus.Framework;
-using Regulus.Game.Tennis1.User;
+using Tennis1.User;
 using UnityEngine;
 
 public class Client : MonoBehaviour
@@ -23,14 +23,14 @@ public class Client : MonoBehaviour
 
     public void RunByRemote()
     {
-        _Client = new Regulus.Framework.Client<Regulus.Game.Tennis1.User.User>(this.Console, this.Console.Command);
+        _Client = new Regulus.Framework.Client<Tennis1.User.User>(this.Console, this.Console.Command);
 
 
         var asms = System.AppDomain.CurrentDomain.GetAssemblies();
 
-        var asm = asms.Where(a => a.ManifestModule.Name == "Regulus.Game.Tennis1.ProtocolTmpl.dll").First();
+        var asm = asms.Where(a => a.ManifestModule.Name == "Tennis1.ProtocolTmpl.dll").First();
 
-        _Client.Selector.AddFactoty("remote", new Regulus.Game.Tennis1.User.RemoteUserFactory(asm));
+        _Client.Selector.AddFactoty("remote", new Tennis1.User.RemoteUserFactory(asm));
         var provider = _Client.Selector.CreateUserProvider("remote");
         this.User  = provider.Spawn("User");
         provider.Select("User");
@@ -39,15 +39,16 @@ public class Client : MonoBehaviour
 
     public void RunByStandalone()
     {
-        _Client = new Regulus.Framework.Client<Regulus.Game.Tennis1.User.User>(this.Console, this.Console.Command);
+        _Client = new Regulus.Framework.Client<Tennis1.User.User>(this.Console, this.Console.Command);
 
         var asms = System.AppDomain.CurrentDomain.GetAssemblies();
 
-        var asm = asms.Where(a => a.ManifestModule.Name == "Regulus.Game.Tennis1.ProtocolTmpl.dll").First();
+        
+        var asm = typeof(Regulus.Protocol.Temp.C24bb669aa88c4552b3fbaaf57bf10087).Assembly;
 
-        var entry = new Regulus.Game.Tennis1.Game.Entry();
+        var entry = new Tennis1.Game.Entry();
         entry.Launch();
-        _Client.Selector.AddFactoty("standalone", new Regulus.Game.Tennis1.User.StandaloneUserFactory(entry, asm));
+        _Client.Selector.AddFactoty("standalone", new Tennis1.User.StandaloneUserFactory(entry, asm));
         var provider = _Client.Selector.CreateUserProvider("standalone");
         this.User = provider.Spawn("User");
         provider.Select("User");
