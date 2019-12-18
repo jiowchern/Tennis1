@@ -44,8 +44,8 @@ public class Client : MonoBehaviour
         var asms = System.AppDomain.CurrentDomain.GetAssemblies();
 
         
-        var asm = typeof(Regulus.Protocol.Temp.C24bb669aa88c4552b3fbaaf57bf10087).Assembly;
-
+        var asm = Regulus.Remote.Protocol.ProtocolProvider.GetProtocols().First().Assembly;
+        
         var entry = new Tennis1.Game.Entry();
         entry.Launch();
         _Client.Selector.AddFactoty("standalone", new Tennis1.User.StandaloneUserFactory(entry, asm));
