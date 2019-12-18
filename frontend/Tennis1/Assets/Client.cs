@@ -25,23 +25,21 @@ public class Client : MonoBehaviour
     {
         _Client = new Regulus.Framework.Client<Tennis1.User.User>(this.Console, this.Console.Command);
 
-
-        var asms = System.AppDomain.CurrentDomain.GetAssemblies();
-
-        var asm = asms.Where(a => a.ManifestModule.Name == "Tennis1.ProtocolTmpl.dll").First();
+        var asm = Regulus.Remote.Protocol.ProtocolProvider.GetProtocols().First().Assembly;
 
         _Client.Selector.AddFactoty("remote", new Tennis1.User.RemoteUserFactory(asm));
         var provider = _Client.Selector.CreateUserProvider("remote");
         this.User  = provider.Spawn("User");
         provider.Select("User");
         _Updater.Add(_Client);
+        _Updater.Add(User);
     }
 
     public void RunByStandalone()
     {
         _Client = new Regulus.Framework.Client<Tennis1.User.User>(this.Console, this.Console.Command);
 
-        var asms = System.AppDomain.CurrentDomain.GetAssemblies();
+        
 
         
         var asm = Regulus.Remote.Protocol.ProtocolProvider.GetProtocols().First().Assembly;
@@ -49,10 +47,15 @@ public class Client : MonoBehaviour
         var entry = new Tennis1.Game.Entry();
         entry.Launch();
         _Client.Selector.AddFactoty("standalone", new Tennis1.User.StandaloneUserFactory(entry, asm));
+        _Updater.Add(_Client);
         var provider = _Client.Selector.CreateUserProvider("standalone");
         this.User = provider.Spawn("User");
-        provider.Select("User");
-        _Updater.Add(_Client);
+        
+        _Updater.Add(User);
+        //provider.Select("User");
+        
+        
+
     }
 
     // Update is called once per frame

@@ -39,17 +39,24 @@ public class Console : MonoBehaviour
 
     void OnGUI()
     {
-        GUILayout.Window(0, new Rect(0, 0, Screen.width / 2, Screen.height) , _WindowHandler, Title); 
-        //GUILayout.Window(0, new Rect(0, 0, 500  / 2, 500), _WindowHandler, Title); 
+        var e = Event.current;
+        if (e.type != EventType.MouseDown && e.type != EventType.MouseUp)
+        {
+            GUILayout.Window(0, new Rect(0, 0, Screen.width / 2, Screen.height), _WindowHandler, Title);
+        }
+
+            
+
     }
     Vector2 _ScrollView;
     private void _WindowHandler(int id)
     {
+        
         GUILayout.BeginVertical();
 
         _ScrollView = GUILayout.BeginScrollView(_ScrollView, GUILayout.Width(Screen.width / 2), GUILayout.Height(Screen.height * 0.9f));
-
-        foreach(var message in _Messages)
+        var messages = _Messages.ToArray();
+        foreach (var message in messages)
         {
             GUILayout.Label(message);
         }        
