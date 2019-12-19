@@ -3,7 +3,7 @@ using Regulus.Remote;
 
 namespace Tests
 {
-    internal class CourtBinder : Regulus.Remote.ISoulBinder 
+    internal class CourtBinder : Regulus.Remote.IBinder 
     {
         public Tennis1.Common.IPlayground Playground;
         public Tennis1.Common.IPreparable Preparable;
@@ -14,7 +14,7 @@ namespace Tests
             Players = new System.Collections.Generic.List<Tennis1.Common.IPlayer>();
         }
 
-        event Action ISoulBinder.BreakEvent
+        event Action IBinder.BreakEvent
         {
             add
             {
@@ -27,7 +27,7 @@ namespace Tests
             }
         }
 
-        void ISoulBinder.Bind<TSoul>(TSoul soul)
+        void IBinder.Bind<TSoul>(TSoul soul)
         {
             if (soul as Tennis1.Common.IPreparable!= null)
                 Preparable = soul as Tennis1.Common.IPreparable;
@@ -39,12 +39,12 @@ namespace Tests
                 Controll = soul as Tennis1.Common.IControll;
         }
 
-        void ISoulBinder.Return<TSoul>(TSoul soul)
+        void IBinder.Return<TSoul>(TSoul soul)
         {
             
         }
 
-        void ISoulBinder.Unbind<TSoul>(TSoul soul)
+        void IBinder.Unbind<TSoul>(TSoul soul)
         {
             
         }

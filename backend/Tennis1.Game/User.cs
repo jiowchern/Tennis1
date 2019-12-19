@@ -6,9 +6,9 @@ namespace Tennis1.Game
 {
     public class User
     {
-        public readonly ISoulBinder Binder;
+        public readonly IBinder Binder;
         public readonly Guid Id;
-        public User(ISoulBinder binder)
+        public User(IBinder binder)
         {
             Id = Guid.NewGuid();
             Binder = binder;

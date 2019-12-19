@@ -4,11 +4,11 @@ using System;
 
 namespace Tests
 {
-    internal class LoungeBinder : ISoulBinder 
+    internal class LoungeBinder : IBinder 
     {
         public Tennis1.Common.IPreparer Lounge;
         public bool IsUnbind { get; private set; }
-        event Action ISoulBinder.BreakEvent
+        event Action IBinder.BreakEvent
         {
             add
             {
@@ -20,7 +20,7 @@ namespace Tests
             }
         }
         
-        void ISoulBinder.Bind<TSoul>(TSoul soul)
+        void IBinder.Bind<TSoul>(TSoul soul)
         {
             IsUnbind = false;
             Lounge = soul as Tennis1.Common.IPreparer;
@@ -29,14 +29,14 @@ namespace Tests
         }
         
         
-        void ISoulBinder.Return<TSoul>(TSoul soul)
+        void IBinder.Return<TSoul>(TSoul soul)
         {
             
         }
 
         
 
-        void ISoulBinder.Unbind<TSoul>(TSoul soul)
+        void IBinder.Unbind<TSoul>(TSoul soul)
         {
             IsUnbind = true;
         }

@@ -3,7 +3,7 @@ using System;
 
 namespace Tests
 {
-    internal class MatchBinder : Regulus.Remote.ISoulBinder
+    internal class MatchBinder : Regulus.Remote.IBinder
     {
         public Tennis1.Common.IMatchable Matchable;
         public bool IsUnbind { get; private set; }
@@ -12,7 +12,7 @@ namespace Tests
         {
         }
 
-        event Action ISoulBinder.BreakEvent
+        event Action IBinder.BreakEvent
         {
             add
             {
@@ -24,17 +24,17 @@ namespace Tests
             }
         }
 
-        void ISoulBinder.Bind<TSoul>(TSoul soul)
+        void IBinder.Bind<TSoul>(TSoul soul)
         {
             IsUnbind = false;
             Matchable = soul as Tennis1.Common.IMatchable;
         }
 
-        void ISoulBinder.Return<TSoul>(TSoul soul)
+        void IBinder.Return<TSoul>(TSoul soul)
         {
         }
 
-        void ISoulBinder.Unbind<TSoul>(TSoul soul)
+        void IBinder.Unbind<TSoul>(TSoul soul)
         {
             IsUnbind = true;
         }

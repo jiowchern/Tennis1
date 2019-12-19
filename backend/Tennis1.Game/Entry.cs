@@ -21,7 +21,7 @@ namespace Tennis1.Game
             _Matcher = new Matcher();
             _Court = new Court();
         }
-        void IBinderProvider.AssignBinder(ISoulBinder binder)
+        void IBinderProvider.AssignBinder(IBinder binder)
         {
             
             var user = new User(binder);
