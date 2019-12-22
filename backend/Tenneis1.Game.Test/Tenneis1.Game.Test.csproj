@@ -13,7 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\theirs\Regulus\Regulus.Utility\Regulus.Utility.csproj" />
     <ProjectReference Include="..\Tennis1.Common\Tennis1.Common.csproj" />
     <ProjectReference Include="..\Tennis1.Game\Tennis1.Game.csproj" />
   </ItemGroup>
