@@ -66,19 +66,37 @@ namespace Tennis1.Game
 
         private void _ToCourt(IEnumerable<System.Guid> ids)
         {
+
+            var users = ids.Select(id => _Users.Find(id));
+            if(users.Any( user => user == null))
+            {
+                foreach(var id in users.Where(u => u != null).Select(u => u.Id))
+                {
+                    _ToLougne(id);
+                }
+            }
+            else
+            {
+                _Court.Join(users);
+            }
             
-            _Court.Join(ids.Select(id => _Users.Query(id)));
         }
 
         private void _ToLougne(System.Guid id)
         {
-            var user = _Users.Query(id);
-            _Lounge.Join(user);
+            var user = _Users.Find(id);
+            if(user != null)
+            {
+                _Lounge.Join(user);
+            }
+            
         }
 
         private void  _ToMatch(System.Guid id, Tennis1.Common.Registration registration) 
         {
-            var user = _Users.Query(id);
+            var user = _Users.Find(id);
+            if (user == null)
+                return;
             user.Registration = registration;
             _Matcher.Join(user);
         }

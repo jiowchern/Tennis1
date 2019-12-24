@@ -20,7 +20,7 @@ namespace Tennis1{
             _Updater = new Updater();
         }
         public abstract Regulus.Remote.IAgent _GetAgent();
-        void Start()   
+        public void Start()   
         {
             _Agent = _GetAgent();
             _Distributor  = new Regulus.Remote.Unity.Distributor(_Agent);
@@ -38,13 +38,13 @@ namespace Tennis1{
             ConnectEvent.Invoke(obj);
         }
 
-        void OnDestroy()
+        public void OnDestroy()
         {
             _Updater.Shutdown();
         }
 
        
-        void Update()
+        public void Update()
         {
             _Updater.Working();
         }

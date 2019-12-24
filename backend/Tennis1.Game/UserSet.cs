@@ -18,7 +18,7 @@
             _Players.Remove(id);
         }
 
-        public User Query(System.Guid id)
+        public User Find(System.Guid id)
         {
             return _Players[id];
         }

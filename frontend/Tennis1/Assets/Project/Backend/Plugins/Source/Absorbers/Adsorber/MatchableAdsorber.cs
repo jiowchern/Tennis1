@@ -77,22 +77,17 @@ namespace Tennis1.Common.Adsorption
         }
         public void Supply(Tennis1.Common.IMatchable gpi)
         {
-            if (_Matchable != null)
-                return;
-            _Matchable = gpi;            
+            _Matchable = gpi;
+            
             EnableEvent.Invoke(true);
             SupplyEvent.Invoke(gpi);
         }
 
         public void Unsupply(Tennis1.Common.IMatchable gpi)
         {
-            if(_Matchable == gpi)
-            {
-                EnableEvent.Invoke(false);
-
-                _Matchable = null;
-            }
+            EnableEvent.Invoke(false);
             
+            _Matchable = null;
         }
         
         public void Cancel()

@@ -8,27 +8,32 @@ public class MatchHandler : MonoBehaviour
     public UnityEngine.UI.Text Port;
     public UnityEngine.UI.Text Name;
     public UnityEngine.UI.Slider Number;
-    public GameObject MatchMessage;
+
+    public GameObject ConnectObject;
+    public Tennis1.Common.Adsorption.PreparerAdsorber PreparerAdsorber;
     public Agent Agent;
+
     
+
+    public void ChangeAgentStatus(bool connect)
+    {
+        
+        ConnectObject.SetActive(!connect);
+    }
     public void Connect()
     {
         Agent.Connect(Ip.text, int.Parse(Port.text));
     }
 
-    public void SignUp(Tennis1.Common.IPreparer preparer)
+    public void SignUp()
     {
         Tennis1.Common.Registration reg = default;
         reg.Name = Name.text;
         reg.PlayerNumber = (int)Number.value;
-        preparer.SignUp(reg);
+        PreparerAdsorber.SignUp(reg);
     }
 
-    public void VisibleMatchMessage(bool visible)
-    {
-        MatchMessage.SetActive(visible);
-    }
-
+    
 
 
 }
