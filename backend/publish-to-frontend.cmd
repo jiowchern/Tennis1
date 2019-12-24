@@ -17,7 +17,7 @@ dotnet publish ./Tennis1.User -f netstandard2.0 -o ..\frontend\Tennis1\Assets\Pr
 
 
 
-cd ..
-dotnet .\tools\ProtocolBuilder\Regulus.Application.Protocol.CodeWriter.dll Tennis1.ProtocolProvider .\frontend\Tennis1\Assets\Project\Backend\Plugins\Tennis1.Common.dll .\frontend\Tennis1\Assets\Project\Backend\Plugins\Source
+
+dotnet run --project ./Tennis1.Protocol.Outputer Tennis1.Tennis1 ..\frontend\Tennis1\Assets\Project\Backend\Plugins\Tennis1.Common.dll ..\frontend\Tennis1\Assets\Project\Backend\Plugins\Source
 
 pause
