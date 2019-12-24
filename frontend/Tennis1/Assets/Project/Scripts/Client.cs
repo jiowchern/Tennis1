@@ -58,8 +58,8 @@ public class Client : MonoBehaviour
 
     private void Selector_GameConsoleEvent(UserProvider<User> provider)
     {
-        User = provider.Spawn("User");
-        provider.Select("User");
+        User = provider.Spawn("Player");
+        //provider.Select("Player");
         _Updater.Add(User);
         InitialedEvent.Invoke();
     }
@@ -74,4 +74,9 @@ public class Client : MonoBehaviour
     private GameModeSelector<User> _Selector;
 
     public User User { get; private set; }
+
+    public static User GetUser()
+    {
+        return GameObject.FindWithTag("ClientSystem").GetComponent<Client>().User;
+    }
 }

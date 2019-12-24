@@ -12,6 +12,7 @@
           "NETStandard.Library": "2.0.3",
           "Regulus.Remote.Client": "0.1.0",
           "Regulus.Remote.Standalone": "0.1.0",
+          "Regulus.Remote.Unity": "0.1.0",
           "System.Runtime": "4.1.2",
           "Tennis1.Common": "1.0.0"
         },
@@ -89,6 +90,17 @@
           }
         }
       },
+      "Regulus.Remote.Unity/0.1.0": {
+        "dependencies": {
+          "Regulus.Remote": "0.1.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Regulus.Remote.Unity.dll": {
+            "assemblyVersion": "0.1.0.0",
+            "fileVersion": "0.1.0.0"
+          }
+        }
+      },
       "Regulus.Serialization/0.1.0": {
         "dependencies": {
           "Regulus.Utility": "0.1.0"
@@ -133,7 +145,7 @@
     "Microsoft.NETCore.Platforms/1.1.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
+      "sha512": "sha512-dEBqCMk+ftsck9b66D7fXeP/W+I4/CUvKbgjkYdjrPaUapPB0Q1uDFxcV0LpEdQLYfvRPNImrWVrp2QjV4XFkQ==",
       "path": "microsoft.netcore.platforms/1.1.0",
       "hashPath": "microsoft.netcore.platforms.1.1.0.nupkg.sha512"
     },
@@ -147,7 +159,7 @@
     "NETStandard.Library/2.0.3": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-st47PosZSHrjECdjeIzZQbzivYBJFv6P2nv4cj2ypdI204DO+vZ7l5raGMiX4eXMJ53RfOIg+/s4DHVZ54Nu2A==",
+      "sha512": "sha512-J+2dishy8XrY+plrohjD0d9ud8Zigi2diaPRiom/AC7KoJyLMnQWSDXFY5hZLDlK2z2J2mGrn3OXnLwpYXOwqg==",
       "path": "netstandard.library/2.0.3",
       "hashPath": "netstandard.library.2.0.3.nupkg.sha512"
     },
@@ -185,6 +197,13 @@
       "sha512": "sha512-G3FvmF37juDfdu/8KVPPLcpchKeKsRpMbE+1sXY/Uf2HVYGwz1pVQzM0lM1Ai1D6T7q5DEIyfZLLtmGVTjIFXw==",
       "path": "regulus.remote.standalone/0.1.0",
       "hashPath": "regulus.remote.standalone.0.1.0.nupkg.sha512"
+    },
+    "Regulus.Remote.Unity/0.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Y9sJF29S3Fr0aic6QNjGZpa/29/wvHeyT6HmjKMQT41z0f5pY2QX1O9X2f3zcBhemuq23m76m6L8tlYiH3+rbg==",
+      "path": "regulus.remote.unity/0.1.0",
+      "hashPath": "regulus.remote.unity.0.1.0.nupkg.sha512"
     },
     "Regulus.Serialization/0.1.0": {
       "type": "package",

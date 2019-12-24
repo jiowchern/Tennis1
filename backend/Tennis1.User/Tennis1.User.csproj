@@ -6,6 +6,7 @@
   <ItemGroup>
     <PackageReference Include="Regulus.Remote.Client" Version="0.1.0" />
     <PackageReference Include="Regulus.Remote.Standalone" Version="0.1.0" />
+    <PackageReference Include="Regulus.Remote.Unity" Version="0.1.0" />
     <PackageReference Include="System.Runtime" Version="4.1.2" />
   </ItemGroup>
 
