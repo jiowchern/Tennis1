@@ -21,7 +21,7 @@ namespace Tennis1{
             _Machine = new StageMachine();
         } 
 
-        void Start()
+        public void Start()
         {
             _ToScan();
         }
@@ -69,12 +69,12 @@ namespace Tennis1{
         }
 
         // Update is called once per frame
-        void Update()
+        public void Update()
         {
             _Machine.Update();
         }
 
-        void OnDestroy()
+        public void OnDestroy()
         {
             if (_Notifier != null)
             {

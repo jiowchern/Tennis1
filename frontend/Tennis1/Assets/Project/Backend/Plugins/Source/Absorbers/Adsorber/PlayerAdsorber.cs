@@ -25,7 +25,7 @@ namespace Tennis1.Common.Adsorption
             _Machine = new Regulus.Utility.StageMachine();
         }
 
-        void Start()
+        public void Start()
         {
             _Machine.Push(new Regulus.Utility.SimpleStage(_ScanEnter, _ScanLeave, _ScanUpdate));
         }
@@ -61,12 +61,12 @@ namespace Tennis1.Common.Adsorption
 
         }
 
-        void Update()
+        public void Update()
         {
             _Machine.Update();
         }
 
-        void OnDestroy()
+        public void OnDestroy()
         {
             _Machine.Termination();
         }
@@ -77,6 +77,9 @@ namespace Tennis1.Common.Adsorption
         }
         public void Supply(Tennis1.Common.IPlayer gpi)
         {
+            if(_Player != null)
+                return;
+
             _Player = gpi;
             _Player.MoveEvent += _OnMoveEvent;
             EnableEvent.Invoke(true);
@@ -85,6 +88,9 @@ namespace Tennis1.Common.Adsorption
 
         public void Unsupply(Tennis1.Common.IPlayer gpi)
         {
+            if(_Player != gpi)
+                return;
+
             EnableEvent.Invoke(false);
             _Player.MoveEvent -= _OnMoveEvent;
             _Player = null;

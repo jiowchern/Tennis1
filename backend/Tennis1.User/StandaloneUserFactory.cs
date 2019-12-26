@@ -24,8 +24,8 @@ namespace Tennis1.User
         {
 
             var protocol = Regulus.Remote.Protocol.ProtocolProvider.Create(_ProtocolAssembly);
-            var agent = new Agent(protocol);
-            agent.ConnectedEvent += () => { this._Standalone.AssignBinder(agent); };
+            var agent = new Agent(protocol) ;
+            ((IAgent)agent).ConnectEvent += () => { this._Standalone.AssignBinder(agent); };
 
             return new User(agent);
 

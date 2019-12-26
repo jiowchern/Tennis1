@@ -11,8 +11,8 @@
         "dependencies": {
           "NETStandard.Library": "2.0.3",
           "Regulus.Remote.Client": "0.1.0",
-          "Regulus.Remote.Standalone": "0.1.0",
-          "Regulus.Remote.Unity": "0.1.0",
+          "Regulus.Remote.Standalone": "0.1.1",
+          "Regulus.Remote.Unity": "0.1.1",
           "System.Runtime": "4.1.2",
           "Tennis1.Common": "1.0.0"
         },
@@ -78,26 +78,26 @@
           }
         }
       },
-      "Regulus.Remote.Standalone/0.1.0": {
+      "Regulus.Remote.Standalone/0.1.1": {
         "dependencies": {
           "Regulus.Remote": "0.1.0",
           "Regulus.Utility": "0.1.0"
         },
         "runtime": {
           "lib/netstandard2.0/Regulus.Remote.Standalone.dll": {
-            "assemblyVersion": "0.1.0.0",
-            "fileVersion": "0.1.0.0"
+            "assemblyVersion": "0.1.1.0",
+            "fileVersion": "0.1.1.0"
           }
         }
       },
-      "Regulus.Remote.Unity/0.1.0": {
+      "Regulus.Remote.Unity/0.1.1": {
         "dependencies": {
           "Regulus.Remote": "0.1.0"
         },
         "runtime": {
           "lib/netstandard2.0/Regulus.Remote.Unity.dll": {
-            "assemblyVersion": "0.1.0.0",
-            "fileVersion": "0.1.0.0"
+            "assemblyVersion": "0.1.1.0",
+            "fileVersion": "0.1.1.0"
           }
         }
       },
@@ -191,19 +191,19 @@
       "path": "regulus.remote.ghost/0.1.0",
       "hashPath": "regulus.remote.ghost.0.1.0.nupkg.sha512"
     },
-    "Regulus.Remote.Standalone/0.1.0": {
+    "Regulus.Remote.Standalone/0.1.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-G3FvmF37juDfdu/8KVPPLcpchKeKsRpMbE+1sXY/Uf2HVYGwz1pVQzM0lM1Ai1D6T7q5DEIyfZLLtmGVTjIFXw==",
-      "path": "regulus.remote.standalone/0.1.0",
-      "hashPath": "regulus.remote.standalone.0.1.0.nupkg.sha512"
+      "sha512": "sha512-UAsLs95fHZFWr3Av6l3s4630sbjN9TK0VQ1tsMalkmg4GbFnmnSNzxxM8pyQ6jhZLYxaJsETXAVuwkDl0GWM9Q==",
+      "path": "regulus.remote.standalone/0.1.1",
+      "hashPath": "regulus.remote.standalone.0.1.1.nupkg.sha512"
     },
-    "Regulus.Remote.Unity/0.1.0": {
+    "Regulus.Remote.Unity/0.1.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Y9sJF29S3Fr0aic6QNjGZpa/29/wvHeyT6HmjKMQT41z0f5pY2QX1O9X2f3zcBhemuq23m76m6L8tlYiH3+rbg==",
-      "path": "regulus.remote.unity/0.1.0",
-      "hashPath": "regulus.remote.unity.0.1.0.nupkg.sha512"
+      "sha512": "sha512-fZvhS6MQupqiw7qQ64WHP7rJWE/doFqO/+B+qvobI32oE17tAhvJ1KW14KmhbPqLwFoBrwLltnOCtft0InKjew==",
+      "path": "regulus.remote.unity/0.1.1",
+      "hashPath": "regulus.remote.unity.0.1.1.nupkg.sha512"
     },
     "Regulus.Serialization/0.1.0": {
       "type": "package",

@@ -14,7 +14,7 @@ public class MatchHandler : MonoBehaviour
     public Agent Agent;
 
     
-
+    
     public void ChangeAgentStatus(bool connect)
     {
         
@@ -33,7 +33,15 @@ public class MatchHandler : MonoBehaviour
         PreparerAdsorber.SignUp(reg);
     }
 
-    
+    public void ToField()
+    {
+        UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("Login").completed += (oper) => {
+            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("Field", UnityEngine.SceneManagement.LoadSceneMode.Additive);
+        };
+        
+        
+
+    }
 
 
 }
