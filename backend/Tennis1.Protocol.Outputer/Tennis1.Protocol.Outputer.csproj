@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Regulus.Remote.Protocol" Version="0.1.2" />
+    <PackageReference Include="Regulus.Remote.Protocol" Version="0.1.3" />
     <PackageReference Include="Regulus.Remote.Unity" Version="0.1.1" />
   </ItemGroup>
 
