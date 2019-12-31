@@ -23,7 +23,6 @@ public class Client : MonoBehaviour
     }
     void Start()
     {
-
         _Client = new Regulus.Framework.Client<Tennis1.User.User>(this.Console, this.Console.Command);
         _Client.ModeSelectorEvent += _Client_ModeSelectorEvent;
         
@@ -58,8 +57,8 @@ public class Client : MonoBehaviour
 
     private void Selector_GameConsoleEvent(UserProvider<User> provider)
     {
-        User = provider.Spawn("Player");
-        //provider.Select("Player");
+        User = provider.Spawn("FirstPlayer");
+        provider.Select("FirstPlayer");
         _Updater.Add(User);
         InitialedEvent.Invoke();
     }
@@ -70,7 +69,12 @@ public class Client : MonoBehaviour
         _Updater.Working();
     }
 
- 
+    private void OnDestroy()
+    {
+        _Updater.Shutdown();
+    }
+
+
     private GameModeSelector<User> _Selector;
 
     public User User { get; private set; }

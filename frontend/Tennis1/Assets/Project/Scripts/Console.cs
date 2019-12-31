@@ -40,7 +40,7 @@ public class Console : MonoBehaviour
     void OnGUI()
     {
         var e = Event.current;
-        if (e.type != EventType.MouseDown && e.type != EventType.MouseUp)
+        if (Event.current.type == EventType.Layout)
         {
             GUILayout.Window(0, new Rect(0, 0, Screen.width / 2, Screen.height), _WindowHandler, Title);
         }

@@ -35,11 +35,11 @@ public class MatchHandler : MonoBehaviour
 
     public void ToField()
     {
-        UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("Login").completed += (oper) => {
-            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("Field", UnityEngine.SceneManagement.LoadSceneMode.Additive);
+        UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("Field", UnityEngine.SceneManagement.LoadSceneMode.Additive).completed += (oper) => {
+            
         };
-        
-        
+
+        //UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("Login");
 
     }
 

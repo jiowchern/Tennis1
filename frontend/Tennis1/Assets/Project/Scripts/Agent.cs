@@ -24,7 +24,15 @@ public class Agent : Tennis1.Tennis1Agent
 
     }
 
-    
+    new public void OnDestroy()
+    {
+        
+    }
+
+
+   
+
+
 
     public override IAgent _GetAgent()
     {
