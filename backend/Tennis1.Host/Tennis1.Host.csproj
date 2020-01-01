@@ -6,11 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Regulus.Application.Server" Version="0.1.0" />
-    <PackageReference Include="Regulus.Remote.Protocol" Version="0.1.3" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\..\Regulus\Regulus.Application.Server\Regulus.Application.Server.csproj" />
     <ProjectReference Include="..\Tennis1.Common\Tennis1.Common.csproj" />
     <ProjectReference Include="..\Tennis1.Game\Tennis1.Game.csproj" />
   </ItemGroup>

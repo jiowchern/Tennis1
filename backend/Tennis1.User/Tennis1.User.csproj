@@ -4,13 +4,13 @@
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Regulus.Remote.Client" Version="0.1.0" />
-    <PackageReference Include="Regulus.Remote.Standalone" Version="0.1.2" />
-    <PackageReference Include="Regulus.Remote.Unity" Version="0.1.1" />
     <PackageReference Include="System.Runtime" Version="4.1.2" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Regulus\Regulus.Remote.Client\Regulus.Remote.Client.csproj" />
+    <ProjectReference Include="..\..\Regulus\Regulus.Remote.Ghost\Regulus.Remote.Ghost.csproj" />
+    <ProjectReference Include="..\..\Regulus\Regulus.Remote.Standalone\Regulus.Remote.Standalone.csproj" />
     <ProjectReference Include="..\Tennis1.Common\Tennis1.Common.csproj" />
   </ItemGroup>
 

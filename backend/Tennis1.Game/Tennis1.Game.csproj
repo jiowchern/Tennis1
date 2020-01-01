@@ -5,10 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Regulus.Remote" Version="0.1.1" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\..\Regulus\Regulus.Remote\Regulus.Remote.csproj" />
+    <ProjectReference Include="..\..\Regulus\Regulus.Utility\Regulus.Utility.csproj" />
     <ProjectReference Include="..\Tennis1.Common\Tennis1.Common.csproj" />
   </ItemGroup>
 

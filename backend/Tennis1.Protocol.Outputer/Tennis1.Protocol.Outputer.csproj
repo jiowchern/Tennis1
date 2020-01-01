@@ -6,8 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Regulus.Remote.Protocol" Version="0.1.3" />
-    <PackageReference Include="Regulus.Remote.Unity" Version="0.1.1" />
+    <ProjectReference Include="..\..\Regulus\Regulus.Remote.Protocol\Regulus.Remote.Protocol.csproj" />
+    <ProjectReference Include="..\..\Regulus\Regulus.Remote.Unity\Regulus.Remote.Unity.csproj" />
   </ItemGroup>
 
 </Project>
