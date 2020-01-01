@@ -13,7 +13,8 @@ public class Agent : Tennis1.Tennis1Agent
     
     new public void Update()
     {
-
+        if (Client.GetUser() == null)
+            return;
         var currentStatus = Client.GetUser().Agent.Connected;
         if (currentStatus != _Status)
         {
@@ -36,6 +37,8 @@ public class Agent : Tennis1.Tennis1Agent
 
     public override IAgent _GetAgent()
     {
+        if (Client.GetUser() == null)
+            return null;
         return Client.GetUser().Agent;
     }
 

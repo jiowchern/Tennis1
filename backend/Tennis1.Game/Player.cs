@@ -9,8 +9,12 @@ namespace Tennis1.Game
         Regulus.CustomType.Vector2 _Location;
         Regulus.CustomType.Vector2 _Vector;
         readonly float _Speed;
+        public readonly Guid Id;
+        Guid IPlayer.Id => Id;
+
         public Player()
         {
+            Id = Guid.NewGuid();
             _Speed = 1f;
             _MoveInterval = new Regulus.Utility.TimeCounter();
         }

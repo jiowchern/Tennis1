@@ -13,6 +13,7 @@
           "Regulus.Remote.Client": "0.1.0",
           "Regulus.Remote.Ghost": "0.1.0",
           "Regulus.Remote.Standalone": "0.1.1",
+          "Regulus.Remote.Unity": "0.1.1",
           "System.Runtime": "4.1.2",
           "Tennis1.Common": "1.0.0"
         },
@@ -79,6 +80,14 @@
         },
         "runtime": {
           "Regulus.Remote.Standalone.dll": {}
+        }
+      },
+      "Regulus.Remote.Unity/0.1.1": {
+        "dependencies": {
+          "Regulus.Remote": "0.1.0"
+        },
+        "runtime": {
+          "Regulus.Remote.Unity.dll": {}
         }
       },
       "Regulus.Serialization/0.1.0": {
@@ -159,6 +168,11 @@
       "sha512": ""
     },
     "Regulus.Remote.Standalone/0.1.1": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Regulus.Remote.Unity/0.1.1": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

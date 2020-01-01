@@ -27,7 +27,7 @@ public class MatchHandler : MonoBehaviour
 
     public void SignUp()
     {
-        Tennis1.Common.Registration reg = default;
+        Tennis1.Common.Registration reg ;
         reg.Name = Name.text;
         reg.PlayerNumber = (int)Number.value;
         PreparerAdsorber.SignUp(reg);
@@ -35,11 +35,13 @@ public class MatchHandler : MonoBehaviour
 
     public void ToField()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("Field", UnityEngine.SceneManagement.LoadSceneMode.Additive).completed += (oper) => {
-            
+        UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("Login").completed += (oper) =>
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("Field", UnityEngine.SceneManagement.LoadSceneMode.Additive);
         };
+        
 
-        //UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("Login");
+        
 
     }
 

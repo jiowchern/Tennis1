@@ -2,6 +2,7 @@
 {
     public interface IPlayer
     {
+        System.Guid Id { get;}
         event System.Action<Move> MoveEvent;
     }
 }

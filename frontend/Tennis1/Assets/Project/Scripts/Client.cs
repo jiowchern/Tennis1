@@ -81,6 +81,13 @@ public class Client : MonoBehaviour
 
     public static User GetUser()
     {
-        return GameObject.FindWithTag("ClientSystem").GetComponent<Client>().User;
+        var clientObj = GameObject.FindWithTag("ClientSystem");
+        if (clientObj == null)
+            return null;
+        var client = clientObj.GetComponent<Client>();
+        if (client == null)
+            return null;
+        return client.User;
     }
 }
+

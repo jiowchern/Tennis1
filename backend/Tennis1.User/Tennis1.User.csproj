@@ -11,6 +11,7 @@
     <ProjectReference Include="..\..\Regulus\Regulus.Remote.Client\Regulus.Remote.Client.csproj" />
     <ProjectReference Include="..\..\Regulus\Regulus.Remote.Ghost\Regulus.Remote.Ghost.csproj" />
     <ProjectReference Include="..\..\Regulus\Regulus.Remote.Standalone\Regulus.Remote.Standalone.csproj" />
+    <ProjectReference Include="..\..\Regulus\Regulus.Remote.Unity\Regulus.Remote.Unity.csproj" />
     <ProjectReference Include="..\Tennis1.Common\Tennis1.Common.csproj" />
   </ItemGroup>
 

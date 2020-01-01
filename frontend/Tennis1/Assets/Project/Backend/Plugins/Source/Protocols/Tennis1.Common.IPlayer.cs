@@ -44,6 +44,8 @@
             
             
 
+                public System.Guid _Id;
+                System.Guid Tennis1.Common.IPlayer.Id { get{ return _Id;} }
 
                 public System.Action<Tennis1.Common.Move> _MoveEvent;
                 event System.Action<Tennis1.Common.Move> Tennis1.Common.IPlayer.MoveEvent

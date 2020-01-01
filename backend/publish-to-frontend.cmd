@@ -6,8 +6,9 @@ mkdir ..\frontend\Tennis1\Assets\Project\Backend\Plugins
 mkdir ..\frontend\Tennis1\Assets\Project\Backend\Plugins\Source
 mkdir ..\frontend\Tennis1\Assets\Project\Backend\Plugins\Game
 
+dotnet clean .\Tennis1.Game
+xcopy .\Tennis1.Game\*.cs ..\frontend\Tennis1\Assets\Project\Backend\Plugins\Game  /y
 
- xcopy .\Tennis1.Game\*.cs ..\frontend\Tennis1\Assets\Project\Backend\Plugins\Game /e /y
 rem dotnet publish ./Tennis1.Game -f netstandard2.0 -o ..\frontend\Tennis1\Assets\Project\Backend\Plugins
 dotnet publish ./Tennis1.User -f netstandard2.0 -o ..\frontend\Tennis1\Assets\Project\Backend\Plugins
 
