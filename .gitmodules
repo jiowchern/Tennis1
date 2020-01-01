@@ -1,0 +1,3 @@
+[submodule "Regulus"]
+	path = Regulus
+	url = git@github.com:jiowchern/Regulus.git
